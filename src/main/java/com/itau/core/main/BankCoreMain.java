@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
+import com.itau.core.service.server.TransfersImpl;
 import com.sun.xml.ws.transport.http.servlet.WSSpringServlet;
 
 @SpringBootApplication(scanBasePackages = {"com.itau.core.main", "com.itau.core.entity", 
@@ -18,7 +19,7 @@ public class BankCoreMain {
 	}
 
     @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new WSSpringServlet(), "/accounts");
+    public ServletRegistrationBean wsServlet() {
+        return new ServletRegistrationBean(new WSSpringServlet(), "/services/*");
     }
 }

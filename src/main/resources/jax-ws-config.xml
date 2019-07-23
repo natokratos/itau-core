@@ -11,9 +11,14 @@
         http://jax-ws.dev.java.net/spring/servlet.xsd"
 >
 
-    <wss:binding url="/accounts">
+    <wss:binding url="/services/accounts">
         <wss:service>
             <ws:service bean="#accountsImpl"/>
+        </wss:service>
+    </wss:binding>
+    <wss:binding url="/services/transfers">
+        <wss:service>
+            <ws:service bean="#transfersImpl"/>
         </wss:service>
     </wss:binding>
 

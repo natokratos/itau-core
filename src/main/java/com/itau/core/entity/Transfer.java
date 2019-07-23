@@ -15,7 +15,7 @@ public class Transfer {
 	    this.message = "";
 	    this.amount = 0.0;
     }
-    
+     
     public Transfer(String fromAccountId, String toAccountId, 
     			String message, Double amount) {
 	    this.fromAccountId = fromAccountId;
