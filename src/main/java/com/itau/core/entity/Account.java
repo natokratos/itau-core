@@ -1,17 +1,30 @@
 package com.itau.core.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Account")
 public class Account {
 
+	@Id
+	@Column(name="accountId")
     private String accountId;
+	@Column(name="accountNumber")
     private String accountNumber;
+	@Column(name="ownerCustomerId")
     private String ownerCustomerId;
+	@Column(name="name")
     private String name;
+	@Column(name="accountType")
     private String accountType;
+	@Column(name="available")
     private Double available;
+	@Column(name="balance")
     private Double balance;
+	@Column(name="creditLimit")
     private Double creditLimit;
    
     public Account() {

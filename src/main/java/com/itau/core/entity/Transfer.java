@@ -1,13 +1,22 @@
 package com.itau.core.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Transfer")
 public class Transfer {
+	@Id
+	@Column(name="fromAccountId")	
     protected String fromAccountId;
-    protected String toAccountId;
-    protected String message;
-    protected Double amount;
+	@Column(name="toAccountId")
+	protected String toAccountId;
+	@Column(name="message")
+	protected String message;
+	@Column(name="amount")
+	protected Double amount;
   
     public Transfer() {
 	    this.fromAccountId = "";
