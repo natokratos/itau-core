@@ -1,5 +1,5 @@
 
-package com.itau.core.service.jaxws;
+package com.itau.core.service.server.jaxws;
 
 import java.util.List;
 

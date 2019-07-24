@@ -1,6 +1,7 @@
 package com.itau.core.service.server;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class TransfersImpl {
 	TransferRepository transferRepositoryImpl;
 	
 	@WebMethod
-	public void postCreate(Transfer transfer) {
+	public void postCreate(@WebParam(name = "transfer") Transfer transfer) {
 		transferRepositoryImpl.save(transfer);
 	}
 

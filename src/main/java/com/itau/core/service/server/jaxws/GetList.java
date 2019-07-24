@@ -1,42 +1,21 @@
 
-package com.itau.core.service.jaxws;
+package com.itau.core.service.server.jaxws;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "getRead", namespace = "http://server.service.core.itau.com/")
+@XmlRootElement(name = "getList", namespace = "http://server.service.core.itau.com/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getRead", namespace = "http://server.service.core.itau.com/", propOrder = {
-    "accountId",
-    "customerId"
-})
-public class GetRead {
+@XmlType(name = "getList", namespace = "http://server.service.core.itau.com/")
+public class GetList {
 
-    @XmlElement(name = "accountId", namespace = "")
-    private String accountId;
     @XmlElement(name = "customerId", namespace = "")
     private String customerId;
-
-    /**
-     * 
-     * @return
-     *     returns String
-     */
-    public String getAccountId() {
-        return this.accountId;
-    }
-
-    /**
-     * 
-     * @param accountId
-     *     the value for the accountId property
-     */
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
 
     /**
      * 

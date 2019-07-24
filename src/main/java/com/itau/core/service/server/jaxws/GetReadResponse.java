@@ -1,5 +1,5 @@
 
-package com.itau.core.service.jaxws;
+package com.itau.core.service.server.jaxws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
