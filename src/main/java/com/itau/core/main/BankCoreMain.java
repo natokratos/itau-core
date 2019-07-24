@@ -14,7 +14,7 @@ import com.sun.xml.ws.transport.http.servlet.WSSpringServlet;
 		"com.itau.core.service.server"})
 @EntityScan(basePackages={"com.itau.core.entity", "com.itau.core.service.jaxws"})
 @EnableJpaRepositories(basePackages = {"com.itau.core.repository"})
-@ImportResource(locations = "jax-ws-config.xml")
+@ImportResource(locations = "classpath:jax-ws-config.xml")
 public class BankCoreMain {
 	
 	public static void main(String[] args) {
