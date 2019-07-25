@@ -9,7 +9,13 @@ Requisitos para desenvolvimento
 - SOAP UI versão mais atual
 - IDE para Desenvolvimento: STS, Eclipse ou IntelliJ
 - Criar um diretório na estação chamado workpsace que conterá os códigos-fonte
-
+- Editar o arquivo /etc/hosts e adicionar os seguintes IP's
+	
+	127.0.0.1       itau-core
+	127.0.0.1       itau-api-gateway
+	127.0.0.1       itau-api-accounts
+	127.0.0.1       itau-api-transfers
+	
 # Baixar o código-fonte
 
 - Via linha de comando, entrar no diretório que conterá os códigos-fonte e executar os comandos abaixo, caso esteja vazio:
@@ -41,8 +47,50 @@ Requisitos para desenvolvimento
 
 # Rodando a aplicação no Docker
 
-aaaa
+- A aplicação já deve estar compilada para que funcione no Docker, veja na seção "Compilar a Aplicação"
 
+- Via linha de comando, mudar para o diretório src/main/docker
+
+- Executar o comando a seguir. Caso apareça um erro dizendo que já existe, apenas ignore e continue no item abaixo:
+
+	docker network create itau-micro-net
+
+- Executar o comando a seguir:
+
+	docker build -t itau-core . 
+	
+- Veja se aparece alguma imagem com o nome itau-core executando este comando:
+
+	docker images
+	
+- Caso apareça execute o comando a seguir para criar o container pela primeira vez, não é necessário executar novamente:
+
+	docker run -d -p 9090:9090 --name itau-core --network itau-micro-net itau-core
+	
+- Parar o container:
+
+	docker stop itau-core
+	
+- Iniciar o container:
+
+	docker start itau-core
+	
+# Atualizar a Aplicação no Docker
+
+- Para atualizar a aplicação no docker, primeiro pare o container:
+
+	docker stop itau-core
+
+- Compile a aplicação novamente conforme descrito na seção "Compilar a Aplicação"
+
+- Via linha de comando mude para o diretório src/main/docker e execute o comando a seguir:
+
+	docker cp itau-core*.jar itau-core:/root/itau-core.jar
+	
+- Reinicie o container:
+	
+	docker start itau-core
+	
 # Web Services SOAP
 
 - Para acessar os WebServices SOAP, digite o seguinte endereço pelo browser:
@@ -55,8 +103,8 @@ aaaa
 
 - Para testar os serviços use o SOAP UI. Abra a ferramenta, crie um novo projeto e aponte para um dos WSDL localizados dentro da aplicação em:
 
-	src/main/resoruces/AccountsImplService.wsdl
-	src/main/resoruces/TransfersImplService.wsdl
+	src/main/resources/AccountsImplService.wsdl
+	src/main/resources/TransfersImplService.wsdl
 
 - Após a criação, adicione o outro WSDL ao projeto. A ferramenta já irá criar objetos para testar todos os métodos disponíveis nos WSDL
 
@@ -69,9 +117,13 @@ aaaa
 
 	http://localhost:9090/h2
     
-- Coloque no campo JDBC_URL o valor jdbc:h2:mem:itaudb
+- Coloque no campo JDBC_URL o valor:
+
+	jdbc:h2:mem:itaudb
   
-- Coloque no campo Username o valor sa
+- Coloque no campo Username o valor:
+
+	sa
   
 - Deixe o campo Password vazio
   
